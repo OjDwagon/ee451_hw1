@@ -1,12 +1,15 @@
 
-all: problem1 problem2
+all: p1a p1b p2
 
-problem1: problem1.c
-	gcc problem1.c -o problem1
+p1a: p1a.c
+	gcc p1a.c -o p1a
 
-problem2: problem2.c
-	gcc problem2.c -o problem2
+p1b: p1b.c
+	gcc p1b.c -o p1b
+
+p2: p2.c
+	gcc p2.c -o p2
 
 .PHONY: clean
 clean: 
-	rm -rf problem1 problem2
+	rm -rf p1a p1b p2
