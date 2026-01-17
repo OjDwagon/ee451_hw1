@@ -49,6 +49,12 @@ int main(int argc, char* argv[]){
 		struct timespec start, stop; 
 		double time;
 		int n = 2048; // matrix size is n*n
+
+		if(argc != 2) {
+			printf("Must provide # of blocks b as an argument");
+			return 1;
+		}
+
 		int b = atoi(argv[1]);
 		
 		double **A = (double**) malloc (sizeof(double*)*n);
