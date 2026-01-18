@@ -21,20 +21,21 @@ void naive_mat_mul(double** A, double** B, double**C,
     return;
 }
 
-// b = number of blocks n is split into
+// b = size of blocks n is split into
 void blocked_mat_mul(double** A, double** B, double**C, int n, int b)
 {
-	int block_size = n / b; // Assume that this is divisible
+	int num_blocks = n / b; // Assume that this is divisible
 	int i, j, k;
 
-	for(i = 0; i < b; ++i) { // Rows of A
-        for(j = 0; j < b; ++j) {
-            for(k = 0; k < b; ++k) {
+	// Assumes that A and B are square matrices
+	for(i = 0; i < num_blocks; ++i) { // Rows of A
+        for(j = 0; j < num_blocks; ++j) {
+            for(k = 0; k < num_blocks; ++k) {
 				// Perform a naive mat mul over the block
 				naive_mat_mul(A, B, C, 
-						i * block_size , (i + 1) * block_size,
-						j * block_size, (j + 1) * block_size,
-						k * block_size, (k + 1) * block_size
+						i * b , (i + 1) * b,
+						j * b, (j + 1) * b,
+						k * b, (k + 1) * b
 					);
             }
         }
@@ -51,7 +52,7 @@ int main(int argc, char* argv[]){
 		int n = 2048; // matrix size is n*n
 
 		if(argc != 2) {
-			printf("Must provide # of blocks b as an argument");
+			printf("Must provide block size b as an argument\n");
 			return 1;
 		}
 
