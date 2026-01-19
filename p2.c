@@ -110,12 +110,13 @@ int main(int argc, char** argv){
 	
 	// print out the execution time here
 	elapsed_time = (stop.tv_sec - start.tv_sec)+ (double)(stop.tv_nsec - start.tv_nsec)/1e9;
-	printf("Execution time: %f\n", elapsed_time);
+	printf("Execution time: %f seconds\n", elapsed_time);
 
-	printf("Means:\n");
-	for(i = 0; i < 4; ++i) {
-		printf("%f\n", means[i]);
-	}
+	// Debug
+	// printf("Means:\n");
+	// for(i = 0; i < 4; ++i) {
+	// 	printf("%f\n", means[i]);
+	// }
 	
 	// Update a to reflect the final clustering
 	for(i = 0; i < h*w; ++i) {
